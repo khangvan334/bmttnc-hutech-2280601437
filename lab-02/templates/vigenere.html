@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vigenere Cipher</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        .cipher-section {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .cipher-title {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .home-btn {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center mt-4">
+            <h1 class="font-weight-bold">VIGENERE CIPHER</h1>
+            <h5 class="font-weight-bold">TRẦN SỶ SƠN LÂM</h5>
+            <h6 class="font-weight-bold">2280601697</h6>
+            <a href="/" class="btn btn-info home-btn">Trang chủ</a>
+        </div>
+
+        <div class="row">
+            <!-- Encryption Section -->
+            <div class="col-md-6">
+                <div class="cipher-section">
+                    <div class="cipher-title">
+                        <h4 class="font-weight-bold text-primary">ENCRYPTION</h4>
+                    </div>
+                    <form method="POST" action="/vigenere/encrypt">
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Plain text:</label>
+                            <input type="text" class="form-control" name="inputPlainText" 
+                                   placeholder="Input Plain Text" required autofocus 
+                                   value="{{ input_plain_text_encrypt if input_plain_text_encrypt else '' }}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Key:</label>
+                            <input type="text" class="form-control" name="inputKeyPlain" 
+                                   placeholder="Input Key" required 
+                                   value="{{ input_key_plain_encrypt if input_key_plain_encrypt else '' }}"/>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Encrypt</button>
+                    </form>
+                    
+                    <div class="mt-4">
+                        <label class="form-label font-weight-bold">Encrypted text:</label>
+                        <input type="text" class="form-control" 
+                               value="{{ output_encrypted_text if output_encrypted_text else '' }}" 
+                               readonly style="background-color: #e9ecef;"/>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decryption Section -->
+            <div class="col-md-6">
+                <div class="cipher-section">
+                    <div class="cipher-title">
+                        <h4 class="font-weight-bold text-success">DECRYPTION</h4>
+                    </div>
+                    <form method="POST" action="/vigenere/decrypt">
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Cipher text:</label>
+                            <input type="text" class="form-control" name="inputCipherText" 
+                                   placeholder="Input Cipher Text" required 
+                                   value="{{ input_cipher_text_decrypt if input_cipher_text_decrypt else '' }}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Key:</label>
+                            <input type="text" class="form-control" name="inputKeyCipher" 
+                                   placeholder="Input Key" required 
+                                   value="{{ input_key_cipher_decrypt if input_key_cipher_decrypt else '' }}"/>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block">Decrypt</button>
+                    </form>
+                    
+                    <div class="mt-4">
+                        <label class="form-label font-weight-bold">Decrypted text:</label>
+                        <input type="text" class="form-control" 
+                               value="{{ output_decrypted_text if output_decrypted_text else '' }}" 
+                               readonly style="background-color: #e9ecef;"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
